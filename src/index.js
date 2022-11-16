@@ -8,6 +8,7 @@ import "./index.css";
 import Discover from "./layout/Home/Discover/Discover";
 import Footers from "./components/CommonCss/footer/Footer";
 import Header from "./components/CommonCss/header/Header";
+import Ppost from "./layout/Home/mainContent/Ppost/Ppost";
 // import Hero from "./layout/Home/Hero/Hero";
 // import { AuthProvider } from "./provider/AuthProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ root.render(
         <>
           <Header />
           <Discover />
+          <Ppost />
           <Footers />
         </>
       </ApiProvider>
