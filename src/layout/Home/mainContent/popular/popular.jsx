@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FcCalendar } from "react-icons/fc";
 
-// import Slider from "react-slider";
-// import { ppost } from "../../../../dummyData";
+import "./popular.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import Heading from "../../../../components/CommonCss/heading/Heading";
-import axios from "axios";
-import "./ppost.css";
 
-// copy same code of popular
-const Ppost = () => {
+const Popular = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const config = {
       method: "get",
-      url: "http://127.0.0.1:8000/api/GetPpost",
+      url: "http://127.0.0.1:8000/api/GetPopular",
       headers: {},
-    }; // "https://newsapi.org/v2/top-headlines?country=se&apiKey=316513ab213c4f64a39e8cb9bd83f2af"
+    };
     axios(config)
       .then(function (response) {
         // setData([...response.data.articles]);
@@ -30,26 +28,38 @@ const Ppost = () => {
         console.log(error);
       });
   }, []);
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-  };
 
+  const settings = {
+    className: "center",
+    centerMode: false,
+    infinite: true,
+    centerPadding: "0",
+    slidesToShow: 2,
+    speed: 500,
+    rows: 4,
+    slidesPerRow: 1,
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 4,
+        },
+      },
+    ],
+  };
   return (
     <>
-      <section className="popularPost">
-        <Heading title="Popular Posts" />
+      <section className="popular">
+        <Heading title="Popular" />
         <div className="content">
           <Slider {...settings}>
-            {data.map((val, i) => {
-              console.log(val.cover);
+            {data.map((val) => {
               return (
                 <div className="items">
                   <div className="box shadow">
-                    <div className="images">
+                    <div className="images row">
                       <div className="img">
                         <img src={val.cover} alt="" />
                       </div>
@@ -57,13 +67,16 @@ const Ppost = () => {
                         <span>{val.catgeory}</span>
                       </div>
                     </div>
-                    <div className="text">
+                    <div className="text row">
                       <h1 className="title">{val.title.slice(0, 40)}...</h1>
-                      <div className="date flex  items-center px-3">
+                      <div className="date flex text-center items-center px-3">
                         <FcCalendar />
-
                         <label>{val.date}</label>
                       </div>
+                      {/* <div className="comment">
+                        <i class="fas fa-comments"></i>
+                        <label>{val.comments}</label>
+              </div>*/}
                     </div>
                   </div>
                 </div>
@@ -76,4 +89,4 @@ const Ppost = () => {
   );
 };
 
-export default Ppost;
+export default Popular;
