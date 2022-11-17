@@ -1,111 +1,110 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { hero } from "../../dummyData";
 import Side from "./../Home/sideContent/side/Side";
+import { FaQuoteLeft } from "react-icons/fa";
+import { IoLogoTwitter } from "react-icons/io";
+import { GrFacebook } from "react-icons/gr";
 
 import "./../Home/mainContent/Homes/home.css";
 import "./singlePage.css";
 import "./../Home/sideContent/side/side.css";
 import SinglePageSlider from "./slider/SinglePageSlider";
+import axios from "axios";
 
 const SinglePage = () => {
   const { id } = useParams();
-  const [item, setItem] = useState(null);
+  const [item, setItem] = useState([]);
+  const [hero, setHero] = useState([]);
 
-  // useEffect(() => {
-  //   const item = hero.find((item) => item.id === parseInt(id));
-  //   window.scrollTo(0, 0);
-  //   if (item) {
-  //     setItem(item);
-  //   }
-  // }, [id]);
+  useEffect(() => {
+    const config = {
+      method: "get",
+      url: "http://127.0.0.1:8000/api/GetHero",
+      headers: {},
+    };
 
-  return;
-  // <>
-  //   {item ? (
-  //     <main>
-  //       <SinglePageSlider />
-  //       <div className="container">
-  //         <section className="mainContent details">
-  //           <h1 className="title">{item.title}</h1>
+    axios(config)
+      .then(function (response) {
+        setHero(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
-  //           <div className="author">
-  //             <span>by</span>
-  //             <img src={item.authorImg} alt="" />
-  //             <p> {item.authorName} on</p>
-  //             <label>{item.time}</label>
-  //           </div>
+  useEffect(() => {
+    const item = hero.find((item) => item.id === parseInt(id));
+    window.scrollTo(0, 0);
+    if (item) {
+      console.log(item);
 
-  //           <div className="social">
-  //             <div className="socBox">
-  //               <i className="fab fa-facebook-f"></i>
-  //               <span>SHARE</span>
-  //             </div>
-  //             <div className="socBox">
-  //               <i className="fab fa-twitter"></i>
-  //               <span>TWITTER</span>
-  //             </div>
-  //             <div className="socBox">
-  //               <i className="fab fa-pinterest"></i>
-  //             </div>
-  //             <div className="socBox">
-  //               <i className="fa fa-envelope"></i>
-  //             </div>
-  //           </div>
+      setItem(item);
+    }
+  }, [hero]);
 
-  //           <div className="desctop">
-  //             {item.desc.map((val) => {
-  //               return (
-  //                 <>
-  //                   <p>{val.para1}</p>
-  //                   <p>{val.para2}</p>
-  //                 </>
-  //               );
-  //             })}
-  //           </div>
-  //           <img src={item.cover} alt="" />
-  //           {item.desc.map((val) => (
-  //             <p>{val.para3}</p>
-  //           ))}
+  if (item.length == 0) return <div> testtt</div>;
+  return (
+    <>
+      <main>
+        <SinglePageSlider />
+        <div className="container mx-5">
+          <section className="mainContent details">
+            <h1 className="title">{item.title}</h1>
 
-  //           <div className="descbot">
-  //             {item.details.map((data) => {
-  //               return (
-  //                 <>
-  //                   <h1>{data.title}</h1>
-  //                   <p>{data.para1}</p>
-  //                 </>
-  //               );
-  //             })}
-  //           </div>
+            <div className="author">
+              <span>by</span>
+              <img src={item.authorImg} alt="" />
+              <p> {item.authorName} on</p>
+              <label>{item.time}</label>
+            </div>
 
-  //           <div className="quote">
-  //             <i className="fa fa-quote-left"></i>
-  //             {item.details.map((data) => (
-  //               <p>{data.quote}</p>
-  //             ))}
-  //           </div>
+            <div className="social">
+              <div className="socBox flex items-center text-center mx-2 px-2">
+                <GrFacebook />
+                <span className="mx-2">SHARE</span>
+              </div>
+              <div className="socBox flex items-center text-center mx-2 px-2">
+                <IoLogoTwitter />
+                <span className="mx-2">TWITTER</span>
+              </div>
+            </div>
 
-  //           <div className="desctop">
-  //             {item.details.map((data) => {
-  //               return (
-  //                 <>
-  //                   <p>{data.para2}</p>
-  //                   <p>{data.para3}</p>
-  //                 </>
-  //               );
-  //             })}
-  //           </div>
-  //         </section>
-  //         <section className="sideContent">
-  //           <Side />
-  //         </section>
-  //       </div>
-  //     </main>
-  //   ) : (
-  //     <h1>not found</h1>
-  //   )}
-  // </>
+            <div className="desctop">
+              <>
+                <p>{item.para}</p>
+                <p>{item.para1}</p>
+              </>
+            </div>
+            <img src={item.cover} alt="" />
+
+            <p>{item.para3}</p>
+
+            <div className="descbot">
+              <>
+                <h1>{item.details.title}</h1>
+                <p>{item.details.para1}</p>
+              </>
+            </div>
+
+            <div className="quote my-5">
+              <FaQuoteLeft />
+              <p>{item.details.quote}</p>
+            </div>
+
+            <div className="desctop">
+              <>
+                <p>{item.details.para2}</p>
+                <p>{item.details.para3}</p>
+              </>
+            </div>
+          </section>
+          <section className="sideContent">
+            <Side />
+          </section>
+        </div>
+      </main>
+    </>
+  );
 };
 
 export default SinglePage;

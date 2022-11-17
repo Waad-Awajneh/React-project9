@@ -22,12 +22,6 @@ function Card(cards) {
               <span className="p-1.5 rounded-lg bg-white hover:bg-red-500 flex items-center justify-center w-fit duration-200 group">
                 <HiSaveAs className="text-sm text-blue-500 group-hover:text-white" />
               </span>
-              {/*  <span className="p-1.5 rounded-lg bg-white hover:bg-blue-500 flex items-center justify-center w-fit duration-200 space-x-1 group">
-                <RiMessage3Fill className="text-sm text-blue-500 group-hover:text-white" />
-                <small className="text-blue-500 group-hover:text-white">
-                  12
-                </small>
-              </span>*/}
             </div>
           </div>
 

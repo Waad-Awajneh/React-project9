@@ -20,15 +20,9 @@ import "./App.css";
 import Homepages from "./layout/Home/Homepages";
 import Footers from "./components/CommonCss/footer/Footer";
 import Header from "./components/CommonCss/header/Header";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SinglePage from "./layout/singlePage/singlePage";
 import Culture from "./layout/culture/culture";
-
 const App = () => {
   return (
     <>

@@ -3,14 +3,10 @@ import Slider from "react-slick";
 
 import { FcCalendar } from "react-icons/fc";
 
-// import Slider from "react-slider";
-// import { ppost } from "../../../../dummyData";
-
 import Heading from "../../../../components/CommonCss/heading/Heading";
 import axios from "axios";
 import "./ppost.css";
 
-// copy same code of popular
 const Ppost = () => {
   const [data, setData] = useState([]);
 
@@ -19,12 +15,10 @@ const Ppost = () => {
       method: "get",
       url: "http://127.0.0.1:8000/api/GetPpost",
       headers: {},
-    }; // "https://newsapi.org/v2/top-headlines?country=se&apiKey=316513ab213c4f64a39e8cb9bd83f2af"
+    };
     axios(config)
       .then(function (response) {
-        // setData([...response.data.articles]);
         setData([...response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);

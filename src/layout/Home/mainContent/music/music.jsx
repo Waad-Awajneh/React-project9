@@ -3,7 +3,9 @@ import axios from "axios";
 import "./music.css";
 import Slider from "react-slick";
 import Heading from "../../../../components/CommonCss/heading/Heading";
-// import { popular } from "../../../../dummyData";
+import { FaCommentAlt } from "react-icons/fa";
+import { FaShareAlt } from "react-icons/fa";
+import { BsCalendar } from "react-icons/bs";
 
 const Music = () => {
   const [music, setMusic] = useState([]);
@@ -16,9 +18,7 @@ const Music = () => {
     };
     axios(config)
       .then(function (response) {
-        // setData([...response.data.articles]);
         setMusic([...response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
@@ -39,34 +39,32 @@ const Music = () => {
     <>
       <section className="music">
         <Heading title="Music News" />
-        <div className="content">
+        <div className="content mx-5">
           <Slider {...settings}>
             {music
               .filter((val) => val.catgeory === "fun")
               .map((val) => {
                 return (
                   <div className="items">
-                    <div className="box shadow flexSB">
+                    <div className="box shadow flex">
                       <div className="images">
                         <div className="img">
                           <img src={val.cover} alt="" />
-                        </div>
-                        <div class="category category1">
-                          <span>{val.catgeory}</span>
+                          {/*     <span>{val.catgeory}</span>*/}
                         </div>
                       </div>
                       <div className="text">
-                        <h1 className="title">{val.title.slice(0, 40)}...</h1>
-                        <div className="date">
-                          <i class="fas fa-calendar-days"></i>
-                          <label>{val.date}</label>
+                        <h1 className="title  font-semibold my-1">
+                          {val.title}
+                        </h1>
+                        <div className="date font-bold flex items-center text-sm px-2 mx-2">
+                          <BsCalendar />
+                          <label className=" m-2">{val.date}</label>
                         </div>
                         <p className="desc">{val.desc.slice(0, 250)}...</p>
-                        <div className="comment">
-                          <i class="fas fa-share"></i>
-                          <label>Share / </label>
-                          <i class="fas fa-comments"></i>
-                          <label>{val.comments}</label>
+                        <div className="comment gap-3 flex text-center items-center px-2">
+                          <FaShareAlt />
+                          <label className="m-2">Share </label>
                         </div>
                       </div>
                     </div>

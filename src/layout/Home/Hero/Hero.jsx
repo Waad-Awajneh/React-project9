@@ -1,26 +1,38 @@
-// import React, { useState } from "react";
-// import { hero } from "../../../dummyData";
-// import "./hero.css";
-// import Card from "./Card";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Hero.css";
+import Card from "./Card";
 
-// const Hero = () => {
-//   const [items, setIems] = useState(hero);
+const Hero = () => {
+  const [items, setItems] = useState();
 
-//   return (
-//     <>
-//       <section className="hero">
-//         <div className="container">
-//           {items.map((item) => {
-//             return (
-//               <>
-//                 <Card key={item.id} item={item} />
-//               </>
-//             );
-//           })}
-//         </div>
-//       </section>
-//     </>
-//   );
-// };
+  useEffect(() => {
+    const config = {
+      method: "get",
+      url: "http://127.0.0.1:8000/api/GetHero",
+      headers: {},
+    };
 
-// export default Hero;
+    axios(config)
+      .then(function (response) {
+        setItems(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  return (
+    <>
+      <section className="hero">
+        <div className="container">
+          {items?.map((item) => {
+            return <Card key={item.id} item={item} />;
+          })}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Hero;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "react-slick";
-// import { lifestyle } from "../../../../dummyData";
+
 import Heading from "../../../../components/CommonCss/heading/Heading";
 
 import "../Ppost/ppost.css";
-//copy ppost code
+
 const Life = () => {
   const [lifestyle, setLifestyle] = useState([]);
 
@@ -14,12 +14,10 @@ const Life = () => {
       method: "get",
       url: "http://127.0.0.1:8000/api/GetLifestyle",
       headers: {},
-    }; // "https://newsapi.org/v2/top-headlines?country=se&apiKey=316513ab213c4f64a39e8cb9bd83f2af"
+    };
     axios(config)
       .then(function (response) {
-        // setData([...response.data.articles]);
         setLifestyle([...response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);

@@ -11,18 +11,21 @@
 
 .singlePopular img {
     width: 210px;
-    height: 100px;
+    height: 150px;
     border-radius: 5px;
+    filter: brightness(0.5);
 }
 
 .singlePopular .text {
     position: absolute;
-    bottom: 30px;
-    left: 0;
-    padding: 10px;
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-67%, 100%);
     color: #fff;
+    text-align: center;
+    width: 70%;
 }
 
 .singlePopular .text h1 {
-    font-size: 13px;
+    font-size: 15px;
 }

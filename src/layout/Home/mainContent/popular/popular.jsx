@@ -20,9 +20,7 @@ const Popular = () => {
     };
     axios(config)
       .then(function (response) {
-        // setData([...response.data.articles]);
         setData([...response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
@@ -73,10 +71,6 @@ const Popular = () => {
                         <FcCalendar />
                         <label>{val.date}</label>
                       </div>
-                      {/* <div className="comment">
-                        <i class="fas fa-comments"></i>
-                        <label>{val.comments}</label>
-              </div>*/}
                     </div>
                   </div>
                 </div>

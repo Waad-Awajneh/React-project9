@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ item: { id, cover, catgeory, title, authorName, time } }) => {
+const Card = (props) => {
   return (
     <>
       <div className="box">
         <div className="img">
-          <img src={cover} alt="" />
+          <img src={props.item.cover} alt="" />
         </div>
         <div className="text">
-          <span className="category">{catgeory}</span>
-          {/*<h1 className='titleBg'>{title}</h1>*/}
-          <Link to={`/SinglePage/${id}`}>
-            <h1 className="titleBg">{title}</h1>
+          <span className="category">{props.item.catgeory}</span>
+          <h1 className="titleBg">{props.item.title}</h1>
+          <Link to={`/SinglePage/${props.item.id}`}>
+            <h1 className="titleBg">{props.item.title}</h1>
           </Link>
           <div className="author flex">
-            <span>by {authorName}</span>
-            <span>{time}</span>
+            <span>by {props.item.authorName}</span>
+            <span>{props.item.time}</span>
           </div>
         </div>
       </div>

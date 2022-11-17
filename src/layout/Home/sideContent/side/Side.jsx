@@ -3,12 +3,8 @@ import axios from "axios";
 import "./side.css";
 import Slider from "react-slick";
 import Heading from "../../../../components/CommonCss/heading/Heading";
-// import { gallery } from "../../../../dummyData";
 import Tpost from "../Tpost/Tpost";
 import SocialMedia from "./../social/social";
-
-//const allCat = [...new Set(popular.map((curEle) => curEle.catgeory))]
-//console.log(allCat)
 
 const Side = () => {
   const [gallery, setGallery] = useState([]);
@@ -18,12 +14,10 @@ const Side = () => {
       method: "get",
       url: "http://127.0.0.1:8000/api/GetGallery",
       headers: {},
-    }; // "https://newsapi.org/v2/top-headlines?country=se&apiKey=316513ab213c4f64a39e8cb9bd83f2af"
+    };
     axios(config)
       .then(function (response) {
-        // setData([...response.data.articles]);
         setGallery([...response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
@@ -73,7 +67,7 @@ const Side = () => {
 
       <section className="catgorys">
         <Heading title="Catgeorys" />
-        {/*<div className='items'>{allCat}</div>*/}
+
         {catgeory.map((val) => {
           return (
             <div className="category category1">
