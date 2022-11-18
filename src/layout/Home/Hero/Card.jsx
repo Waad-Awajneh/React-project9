@@ -9,8 +9,7 @@ const Card = (props) => {
           <img src={props.item.cover} alt="" />
         </div>
         <div className="text">
-          <span className="category">{props.item.catgeory}</span>
-          <h1 className="titleBg">{props.item.title}</h1>
+          <span className="category">{props.item.catgeory.catgeory}</span>
           <Link to={`/SinglePage/${props.item.id}`}>
             <h1 className="titleBg">{props.item.title}</h1>
           </Link>

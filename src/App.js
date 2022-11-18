@@ -1,19 +1,4 @@
-// import React from "react";
-// import Footers from "./components/CommonCss/footer/Footer";
-// import Header from "./components/CommonCss/header/Header";
-// import RoutePath from "./routes/RoutePath";
-
-// const App = () => {
-//   return (
-//     <>
-//       <Header />
-//       <Footers />
-//     </>
-//   );
-// };
-// export default App;
-
-import React from "react";
+import React, { useContext } from "react";
 
 import "./App.css";
 
@@ -23,18 +8,22 @@ import Header from "./components/CommonCss/header/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SinglePage from "./layout/singlePage/singlePage";
 import Culture from "./layout/culture/culture";
+import { ReferenceDataContext } from "./ReferenceDataContext/ReferenceDataContext";
 const App = () => {
+  // console.log(ReferenceDataContext);
+  // const data = useContext(ReferenceDataContext);
+  // console.log(data);
+  // console.log(isLoading);
+
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Homepages />} />
-          <Route path="/singlepage/:id" exact element={<SinglePage />} />
-          <Route exact path="/culture" element={<Culture />} />
-        </Routes>
-        <Footers />
-      </Router>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Homepages />} />
+        <Route path="/singlepage/:id" exact element={<SinglePage />} />
+        <Route exact path="/culture" element={<Culture />} />
+      </Routes>
+      <Footers />
     </>
   );
 };

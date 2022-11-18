@@ -11,11 +11,16 @@ import Header from "./components/CommonCss/header/Header";
 import Ppost from "./layout/Home/mainContent/Ppost/Ppost";
 import Popular from "./layout/Home/mainContent/popular/popular";
 import Hero from "./layout/Home/Hero/Hero";
+import ReferenceDataContextProvider from "./ReferenceDataContext/ReferenceDataContext";
+import Login from "./layout/login";
 // import Hero from "./layout/Home/Hero/Hero";
 // import { AuthProvider } from "./provider/AuthProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <ReferenceDataContextProvider>
+      {/*<App />*/}
+      <Login />
+    </ReferenceDataContextProvider>
+  </BrowserRouter>
 );

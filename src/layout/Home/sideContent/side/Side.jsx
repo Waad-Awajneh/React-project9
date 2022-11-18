@@ -1,28 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./side.css";
 import Slider from "react-slick";
 import Heading from "../../../../components/CommonCss/heading/Heading";
 import Tpost from "../Tpost/Tpost";
 import SocialMedia from "./../social/social";
+import { ReferenceDataContext } from "../../../../ReferenceDataContext/ReferenceDataContext";
 
 const Side = () => {
-  const [gallery, setGallery] = useState([]);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: "http://127.0.0.1:8000/api/GetGallery",
-      headers: {},
-    };
-    axios(config)
-      .then(function (response) {
-        setGallery([...response.data]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  const { data, isLoading, adv, catgeory } = useContext(ReferenceDataContext);
+  // const [data,setdata]
+  //   useEffect(() => {
+  //     setItems(data);
+  //   }, [data]);
 
   const settings = {
     dots: false,
@@ -32,23 +23,14 @@ const Side = () => {
     slidesToScroll: 1,
   };
 
-  const catgeory = [
-    "world",
-    "travel",
-    "sport",
-    "fun",
-    "health",
-    "fashion",
-    "business",
-    "technology",
-  ];
+  if (isLoading) {
+    return <div>Loading .......</div>;
+  }
   return (
     <>
       <Heading title="Stay Connected" />
       <SocialMedia />
-
       <Heading title="Subscribe" />
-
       <section className="subscribe">
         <h1 className="title">Subscribe to our New Stories</h1>
         <form action="">
@@ -58,21 +40,23 @@ const Side = () => {
           </button>
         </form>
       </section>
-
-      <section className="banner">
-        <img src="./images/sidebar-banner-new.jpg" alt="" />
+      <section className="banner lg:block md:flex gap-1">
+        {/* <img src="./images/sidebar-banner-new.jpg" alt="" />*/}
+        {adv.map((val) => (
+          <img src={val.cover} alt="" />
+        ))}
       </section>
-
-      <Tpost />
-
+      {/*     <Tpost />*/}
       <section className="catgorys">
         <Heading title="Catgeorys" />
 
         {catgeory.map((val) => {
           return (
-            <div className="category category1">
-              <span>{val}</span>
-            </div>
+            <Link to={`/${val.catgeory}`}>
+              <div className="catgeory category1">
+                <span>{val.catgeory}</span>
+              </div>
+            </Link>
           );
         })}
       </section>
@@ -80,12 +64,15 @@ const Side = () => {
       <section className="gallery">
         <Heading title="Gallery" />
         <Slider {...settings}>
-          {gallery.map((val) => {
-            return (
-              <div className="img">
-                <img src={val.cover} alt="" />
-              </div>
-            );
+          {data.map((val) => {
+            if (val.catgeory.catgeory == "Style")
+              return (
+                <Link to={`/SinglePage/${val.id}`}>
+                  <div className="img">
+                    <img src={val.cover} alt="" />
+                  </div>
+                </Link>
+              );
           })}
         </Slider>
       </section>
