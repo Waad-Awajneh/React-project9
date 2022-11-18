@@ -1,20 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import InputFiled from "./inputFiled";
 import { BsGoogle } from "react-icons/bs";
-import Checkbox from "./checkBox";
-import FooterComponent from "./Footer";
-import Navbar from "./Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+// import Checkbox from "./checkBox";
+// import FooterComponent from "./Footer";
+// import Navbar from "./Navbar";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
+const patterns = {
+  email: /(\w{4,}).?-?_?(\w{2,})?@([a-z\d]+).com/,
+  password: /^[\w]{8,20}$/,
+};
 
 function SignUp() {
+  const [cookies, setCookie] = useCookies(["currentUser"]);
+  const [allUsers, setAllusers] = useCookies(["AllUsers"]);
+
+  const [allUsersArray, setAllusersArray] = useState([]);
+  const navigate = useNavigate();
+  const handelSubmit = () => {
+    let email = document.getElementById("email").value;
+    let name = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+    let ConfirmPassword = document.getElementById("ConfirmPassword").value;
+
+    if (
+      patterns.email.test(email) &&
+      patterns.password.test(password) &&
+      password == ConfirmPassword
+    ) {
+      console.log("tets");
+      if (checkEmail(email)) {
+        let newUser = { name: name, email: email, password: password };
+        setAllusersArray([...allUsersArray, newUser]);
+        console.log(allUsersArray);
+        setCookie("currentUser", newUser, { path: "/" });
+        setAllusers("AllUsers", [...allUsersArray, newUser], { path: "/" });
+        navigate("/");
+      } else {
+        MySwal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "This Email is already used",
+          denyButtonColor: "#8E05C2",
+        });
+      }
+    } else {
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Invalid Password or Email pattern ",
+        denyButtonColor: "#8E05C2",
+      });
+    }
+  };
+
+  function checkEmail(E) {
+    let rightUser = allUsersArray?.filter((user) => {
+      if (user.email == E) return true;
+    });
+    if (rightUser[0] == null) {
+      return true;
+    }
+
+    return false;
+  }
+
   return (
     <>
       <section className="absolute w-full h-full">
         <div
           className="absolute top-0 w-full h-full bg-gray-900"
           style={{
-            backgroundImage: "url(" + require("./../assests/img/1.jpg") + ")",
+            backgroundImage: "url(./images/sidebar-banner-new.jpg)",
             backgroundSize: "100%",
             backgroundRepeat: "no-repeat",
           }}
@@ -59,54 +123,47 @@ function SignUp() {
                       placeholder={"First Name "}
                       type={"text"}
                       icon={"MdFace"}
+                      id={"name"}
                     />
                     <InputFiled
                       placeholder={"Email "}
                       type={"email"}
                       icon={"AiTwotoneMail"}
+                      id={"email"}
                     />
                     <InputFiled
                       placeholder={"Password "}
                       type={"password"}
                       icon={"RiLockPasswordFill"}
+                      id={"password"}
                     />
                     <InputFiled
                       placeholder={"Confirm Password "}
                       type={"password"}
                       icon={"RiLockPasswordFill"}
+                      id={"ConfirmPassword"}
                     />
-                    <Checkbox
-                      data="I agree to the terms and conditions.
-"
-                    />
+
                     <div className="text-center mt-6">
                       <button
                         className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                         type="button"
                         style={{ transition: "all .15s ease" }}
+                        onClick={handelSubmit}
                       >
                         SignUp
                       </button>
                     </div>
                   </form>
                   <div className="flex flex-wrap mt-6">
-                    <div className="w-1/2">
-                      <a
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                        className="text-gray-800 hover:shadow-lg"
-                      >
-                        <small>Forgot password?</small>
-                      </a>
-                    </div>
                     <div className="w-1/2 text-right">
-                      <a
-                        href="#pablo"
+                      <Link
+                        to={"/login"}
                         onClick={(e) => e.preventDefault()}
                         className="text-gray-800 hover:shadow-lg"
                       >
                         <small>Create new account</small>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

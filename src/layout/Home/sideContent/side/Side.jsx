@@ -60,7 +60,7 @@ const Side = () => {
           );
         })}
       </section>
-
+      // console.log(cookies);
       <section className="gallery">
         <Heading title="Gallery" />
         <Slider {...settings}>

@@ -19,8 +19,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ReferenceDataContextProvider>
-      {/*<App />*/}
-      <Login />
+      <App />
     </ReferenceDataContextProvider>
   </BrowserRouter>
 );

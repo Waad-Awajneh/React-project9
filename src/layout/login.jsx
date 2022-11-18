@@ -4,8 +4,17 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import InputFiled from "./inputFiled";
 import { BsGoogle } from "react-icons/bs";
-// import Checkbox from "./checkBox";
+import { useCookies } from "react-cookie";
+
 function Login() {
+  const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
+  const handelSubmit = () => {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    const currentUser = { email: email, password: password };
+    setCookie("currentUser", currentUser, { path: "/" });
+  };
+
   return (
     <>
       <section className="absolute w-full h-full">
@@ -56,11 +65,13 @@ function Login() {
                       placeholder={"Email "}
                       type={"email"}
                       icon={"AiTwotoneMail"}
+                      id={"email"}
                     />
                     <InputFiled
                       placeholder={"Password "}
                       type={"password"}
                       icon={"RiLockPasswordFill"}
+                      id={"password"}
                     />
 
                     {/*   <Checkbox data="Remember me" />*/}
@@ -69,6 +80,7 @@ function Login() {
                         className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                         type="button"
                         style={{ transition: "all .15s ease" }}
+                        onClick={handelSubmit}
                       >
                         Sign In
                       </button>
@@ -86,7 +98,7 @@ function Login() {
                     </div>
                     <div className="w-1/2 text-right">
                       <Link
-                        to="/signup"
+                        to="/sigup"
                         className="text-gray-800 hover:shadow-lg"
                       >
                         <small>Create new account</small>
