@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import InputFiled from "./inputFiled";
 import { BsGoogle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-// import Checkbox from "./checkBox";
-// import FooterComponent from "./Footer";
-// import Navbar from "./Navbar";
+
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -17,13 +15,23 @@ const patterns = {
   email: /(\w{4,}).?-?_?(\w{2,})?@([a-z\d]+).com/,
   password: /^[\w]{8,20}$/,
 };
+// const allUsersArray = [];
 
 function SignUp() {
   const [cookies, setCookie] = useCookies(["currentUser"]);
   const [allUsers, setAllusers] = useCookies(["AllUsers"]);
+  let isRedirect = false;
 
   const [allUsersArray, setAllusersArray] = useState([]);
+
   const navigate = useNavigate();
+
+  // if (isRedirect) {
+  //   isRedirect = false;
+
+  //   navigate("/");
+  // }
+
   const handelSubmit = () => {
     let email = document.getElementById("email").value;
     let name = document.getElementById("name").value;
@@ -35,14 +43,16 @@ function SignUp() {
       patterns.password.test(password) &&
       password == ConfirmPassword
     ) {
-      console.log("tets");
+      // console.log("tets");
       if (checkEmail(email)) {
         let newUser = { name: name, email: email, password: password };
         setAllusersArray([...allUsersArray, newUser]);
-        console.log(allUsersArray);
+        let arr = [...allUsersArray, newUser];
+        console.log([...allUsersArray, newUser]);
         setCookie("currentUser", newUser, { path: "/" });
-        setAllusers("AllUsers", [...allUsersArray, newUser], { path: "/" });
-        navigate("/");
+        setAllusers("allUsers", arr, { path: "/" });
+        // isRedirect = true;
+        // callNav();
       } else {
         MySwal.fire({
           icon: "error",
@@ -70,6 +80,9 @@ function SignUp() {
     }
 
     return false;
+  }
+  function callNav() {
+    navigate("/");
   }
 
   return (

@@ -4,10 +4,14 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { TiTimes } from "react-icons/ti";
 import { FaBars } from "react-icons/fa";
+import { useCookies } from "react-cookie";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
-
+  const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
+  const handelLogout = () => {
+    removeCookie("currentUser");
+  };
   return (
     <>
       <Head />
@@ -38,6 +42,17 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/reviews">Reviews</Link>
+              </li>
+              {console.log(cookies.currentUser == null)}
+              <li>
+                {cookies.currentUser == null && <Link to="/login">Login</Link>}
+              </li>
+              <li>
+                <Link to="/">
+                  {cookies.currentUser != null && (
+                    <button onClick={handelLogout}>logout</button>
+                  )}
+                </Link>
               </li>
             </ul>
             <button className="barIcon" onClick={() => setNavbar(!navbar)}>

@@ -1,18 +1,44 @@
 import React from "react";
 
 import { FaFacebookSquare } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputFiled from "./inputFiled";
 import { BsGoogle } from "react-icons/bs";
 import { useCookies } from "react-cookie";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 function Login() {
+  const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
+  const [allUsers, setAllusers] = useCookies(["allUsers"]);
+
   const handelSubmit = () => {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     const currentUser = { email: email, password: password };
-    setCookie("currentUser", currentUser, { path: "/" });
+    if (checkUser()) {
+      setCookie("currentUser", currentUser, { path: "/" });
+      navigate("/");
+    } else {
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Invalid Email or password",
+        denyButtonColor: "#8E05C2",
+      });
+    }
+
+    function checkUser() {
+      console.log(allUsers);
+      let user = allUsers.AllUsers.filter(
+        (user) => user.email == currentUser.email
+      );
+      if (user.length > 0) return true;
+    }
   };
 
   return (
