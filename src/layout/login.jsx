@@ -113,7 +113,7 @@ function Login() {
                     </div>
                   </form>
                   <div className="flex flex-wrap mt-6">
-                    <div className="w-1/2">
+                    {/*}      <div className="w-1/2">
                       <a
                         href="#pablo"
                         onClick={(e) => e.preventDefault()}
@@ -121,7 +121,7 @@ function Login() {
                       >
                         <small>Forgot password?</small>
                       </a>
-                    </div>
+        </div>*/}
                     <div className="w-1/2 text-right">
                       <Link
                         to="/sigup"

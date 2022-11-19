@@ -1,17 +1,32 @@
-import React from "react";
+// import React from "react";
 import "./footer.css";
 import { FaHeadphonesAlt } from "react-icons/fa";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { BsFillHeartFill } from "react-icons/bs";
 import { Footer } from "flowbite-react";
+import React, { useState, useEffect, useContext } from "react";
+import { ReferenceDataContext } from "./../../../ReferenceDataContext/ReferenceDataContext";
+import { Link } from "react-router-dom";
 
 const Footers = () => {
+  const { data, isLoading } = useContext(ReferenceDataContext);
+  const SumLable = (catgeory) => {
+    // console.log(catgeory);
+    return data?.filter((item) => item.catgeory.catgeory == catgeory).length;
+  };
   return (
     <>
       <footer>
         <div className="container">
           <div className="box logo">
-            <img src="../images/tech-logo-footer.png" alt="" />
+            <Link to={"/"}>
+              {" "}
+              <img
+                src="../images/logo.png"
+                className="bg-white w-3/4  "
+                alt=""
+              />
+            </Link>
             <p>
               News the world leader in online news and information and seeks to
               inform, engage and empower the world.
@@ -23,41 +38,60 @@ const Footers = () => {
           </div>
           <div className="box">
             <h3>SPORT</h3>
-            <div className="item">
-              <img src="../images/hero/hero1.jpg" alt="" />
-              <p>Google To Boost Android Security In Few Days</p>
-            </div>
-            <div className="item">
-              <img src="../images/hero/hero2.jpg" alt="" />
-              <p>Cespedes play the winning Baseball Game</p>
-            </div>
+
+            {data
+              ?.filter((item) => item.catgeory.catgeory == "Sport")
+              .filter((item, i) => i < 2)
+              .map((item) => {
+                return (
+                  <div className="item">
+                    <img src={item.cover} alt="" />
+                    <p>{item.title}</p>
+                  </div>
+                );
+              })}
           </div>
           <div className="box">
-            <h3>CRICKET</h3>
-            <div className="item">
-              <img src="../images/hero/hero3.jpg" alt="" />
-              <p>US Promises to give Intel aid to locate the soldiers</p>
-            </div>
-            <div className="item">
-              <img src="../images/hero/hero1.jpg" alt="" />
-              <p>Renewable energy dead as industry waits for Policy</p>
-            </div>
+            <h3>Health</h3>
+            {data
+              ?.filter((item) => item.catgeory.catgeory == "Health")
+              .filter((item, i) => i < 2)
+              .map((item) => {
+                return (
+                  <div className="item">
+                    <img src={item.cover} alt="" />
+                    <p>{item.title}</p>
+                  </div>
+                );
+              })}
           </div>
           <div className="box">
             <h3>LABELS</h3>
             {/*<i className='fa fa-chevron-right'></i>*/}
             <ul>
               <li>
-                <span>Boxing</span> <label>(5)</label>
+                <Link to="/World">World</Link>
+                <label>{SumLable("World")}</label>
               </li>
               <li>
-                <span>Fashion</span> <label>(6)</label>
+                <Link to="/Busness">Busness</Link>
+                <label>{SumLable("Busness")}</label>
               </li>
               <li>
-                <span>Health</span> <label>(7)</label>
+                <Link to="/Health">Health</Link>
+                <label>{SumLable("Health")}</label>
               </li>
               <li>
-                <span>Nature</span> <label>(9)</label>
+                <Link to="/Sports">Sports</Link>
+                <label>{SumLable("Sports")}</label>
+              </li>
+              <li>
+                <Link to="/Style">Style</Link>
+                <label>{SumLable("Style")}</label>
+              </li>
+              <li>
+                <Link to="/Media">Media</Link>
+                <label>{SumLable("Media")}</label>
               </li>
             </ul>
           </div>
@@ -65,7 +99,7 @@ const Footers = () => {
       </footer>
       <div className="legal  ">
         <div className="container flexSB">
-          <Footer.Copyright href="/landing" by="WED" year={2022} />
+          <Footer.Copyright href="/landing" by="discussion" year={2022} />
         </div>
       </div>
     </>

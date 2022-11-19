@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./music.css";
 import Slider from "react-slick";
@@ -6,24 +5,26 @@ import Heading from "../../../../components/CommonCss/heading/Heading";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
+import React, { useState, useEffect, useContext } from "react";
+import { ReferenceDataContext } from "../../../../ReferenceDataContext/ReferenceDataContext";
 
 const Music = () => {
-  const [music, setMusic] = useState([]);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: "http://127.0.0.1:8000/api/GetPopular",
-      headers: {},
-    };
-    axios(config)
-      .then(function (response) {
-        setMusic([...response.data]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  // const [music, setMusic] = useState([]);
+  const { data, isLoading } = useContext(ReferenceDataContext);
+  // useEffect(() => {
+  //   const config = {
+  //     method: "get",
+  //     url: "http://127.0.0.1:8000/api/GetPopular",
+  //     headers: {},
+  //   };
+  //   axios(config)
+  //     .then(function (response) {
+  //       setMusic([...response.data]);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const settings = {
     className: "center",
@@ -38,11 +39,11 @@ const Music = () => {
   return (
     <>
       <section className="music">
-        <Heading title="Music News" />
+        <Heading title="Media" />
         <div className="content mx-5">
           <Slider {...settings}>
-            {music
-              .filter((val) => val.catgeory === "fun")
+            {data
+              .filter((val) => val.catgeory.catgeory === "Media")
               .map((val) => {
                 return (
                   <div className="items">
@@ -59,9 +60,9 @@ const Music = () => {
                         </h1>
                         <div className="date font-bold flex items-center text-sm px-2 mx-2">
                           <BsCalendar />
-                          <label className=" m-2">{val.date}</label>
+                          <label className=" m-2">{val.time}</label>
                         </div>
-                        <p className="desc">{val.desc.slice(0, 250)}...</p>
+                        <p className="desc">{val.para1.slice(0, 250)}...</p>
                         <div className="comment gap-3 flex text-center items-center px-2">
                           <FaShareAlt />
                           <label className="m-2">Share </label>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   return (
@@ -6,7 +7,9 @@ const Head = () => {
       <section className="head">
         <div className="container flexSB paddingTB">
           <div className="logo">
-            <img src="../images/logo.png" alt="" />
+            <Link to={"/"}>
+              <img src="../images/logo.png" alt="" />
+            </Link>
           </div>
           <div className="ad">
             {/*<img src="../images/headerb.png" alt="" />*/}

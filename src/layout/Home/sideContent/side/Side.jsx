@@ -60,18 +60,22 @@ const Side = () => {
           );
         })}
       </section>
-      // console.log(cookies);
+
       <section className="gallery">
         <Heading title="Gallery" />
         <Slider {...settings}>
           {data.map((val) => {
             if (val.catgeory.catgeory == "Style")
               return (
-                <Link to={`/SinglePage/${val.id}`}>
-                  <div className="img">
-                    <img src={val.cover} alt="" />
-                  </div>
-                </Link>
+                <div className="img">
+                  <img src={val.cover} alt="" />
+
+                  <Link to={`/SinglePage/${val.id}`}>
+                    <div className="p-3 items-center">
+                      <h1 className=" text-md  font-medium">{val.title}</h1>
+                    </div>
+                  </Link>
+                </div>
               );
           })}
         </Slider>

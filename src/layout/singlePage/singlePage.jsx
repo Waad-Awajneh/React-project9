@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Side from "./../Home/sideContent/side/Side";
 import { FaQuoteLeft } from "react-icons/fa";
 import { IoLogoTwitter } from "react-icons/io";
 import { GrFacebook } from "react-icons/gr";
+import { ReferenceDataContext } from "./../../ReferenceDataContext/ReferenceDataContext";
 
 import "./../Home/mainContent/Homes/home.css";
 import "./singlePage.css";
@@ -13,40 +14,41 @@ import axios from "axios";
 
 const SinglePage = () => {
   const { id } = useParams();
+  const { data } = useContext(ReferenceDataContext);
   const [item, setItem] = useState([]);
-  const [hero, setHero] = useState([]);
+  // const [hero, setHero] = useState([]);
+
+  // useEffect(() => {
+  //   const config = {
+  //     method: "get",
+  //     url: "http://127.0.0.1:8000/api/GetHero",
+  //     headers: {},
+  //   };
+
+  //   axios(config)
+  //     .then(function (response) {
+  //       setHero(response.data.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    const config = {
-      method: "get",
-      url: "http://127.0.0.1:8000/api/GetHero",
-      headers: {},
-    };
-
-    axios(config)
-      .then(function (response) {
-        setHero(response.data.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    const item = hero.find((item) => item.id === parseInt(id));
+    const item = data.find((item) => item.id === parseInt(id));
     window.scrollTo(0, 0);
     if (item) {
       console.log(item);
 
       setItem(item);
     }
-  }, [hero]);
+  }, [data]);
 
-  if (item.length == 0) return <div> testtt</div>;
+  if (item.length == 0) return <div> LOading ....</div>;
   return (
     <>
       <main>
-        <SinglePageSlider />
+        <SinglePageSlider catgeory={item.catgeory.catgeory} />
         <div className="container mx-5">
           <section className="mainContent details">
             <h1 className="title">{item.title}</h1>

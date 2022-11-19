@@ -16,7 +16,7 @@ header li {
   transition: 0.5s;
 }
 
-header li:hover {
+header li a:hover {
   color: crimson;
   cursor: pointer;
 }
@@ -53,14 +53,15 @@ header a {
   header .navbar {
     position: absolute;
     /* display: block; */
-    background-color: #fb4c35;
+    background-color: #341b1bd7;
+
     left: 0;
     top: 21%;
     transition: 0.5s;
     width: 100%;
-    height: 45vh;
+    /* height: 45vh; */
     z-index: 5;
-    padding: 50px;
+    padding: 30px;
   }
 
   header .navbar {
@@ -72,4 +73,6 @@ header a {
   header ul li {
     margin-bottom: 30px;
   }
+
+
 }

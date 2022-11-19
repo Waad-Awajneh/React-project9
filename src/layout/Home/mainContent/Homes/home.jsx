@@ -15,8 +15,8 @@ const Homes = () => {
           <section className="mainContent">
             <Popular />
             <Ppost />
-            <Life />
             <Music />
+            <Life />
           </section>
           <section className="sideContent">
             <Side />
