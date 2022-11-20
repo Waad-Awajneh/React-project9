@@ -65,8 +65,6 @@ const ReferenceDataContextProvider = ({ children }) => {
         isLoading,
         adv,
         catgeory,
-        setToSearch,
-        tosearch,
       }}
     >
       {children}

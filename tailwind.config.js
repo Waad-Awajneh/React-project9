@@ -8,7 +8,7 @@ module.exports = withMT({
   ],
   theme: {
     colors: {
-      lnav: "#D9AD90",
+      lnav: "#fa4b35",
       lb: "#DFCDC1",
       pcol: "#CA895E",
     },

@@ -9,17 +9,20 @@ function Contact() {
       <div className="container  px-6 mx-auto">
         <section className="mb-32 text-gray-800">
           <div
-            className="relative overflow-hidden bg-no-repeat bg-cover"
+            className="relative overflow-hidden bg-no-repeat bg-cover justify-center"
             style={{
-              backgroundImage:
-                "url('https://cdn1.weddingwire.com/assets/img/home/bg_hero2.jpg')",
+              // backgroundImage: "url('./images/1.png')",
               backgroundPosition: "50%",
-              height: "500px",
+              height: "300px",
             }}
-          ></div>
+          >
+            <h2 className="xl:w-8/12 lg:w-10/12 w-full my-5 font-bold text-black lg:text-4xl text-3xl lg:leading-10 leading-9 mt-2">
+              Contact US
+            </h2>
+          </div>
           <div className="container text-gray-800 px-4 md:px-12">
             <div
-              className="block rounded-lg shadow-lg py-10 md:py-12 px-2 md:px-6"
+              className="block rounded-lg shadow-xl py-10 md:py-12 px-2 md:px-6"
               style={{
                 marginTop: "-150px",
                 background: "hsla(0, 0%, 100%, 0.8)",
@@ -68,7 +71,7 @@ function Contact() {
               w-full
               px-6
               py-2.5
-               bg-lnav
+               bg-black
               text-white
               font-medium
               text-xs
@@ -76,9 +79,9 @@ function Contact() {
               uppercase
               rounded
               shadow-md
-              hover:bg-pcol hover:shadow-lg
-              focus:bg-pcol focus:shadow-lg focus:outline-none focus:ring-0
-              active:bg-pcol active:shadow-lg
+              hover:bg-lnav hover:shadow-lg
+              focus:bg-lnav focus:shadow-lg focus:outline-none focus:ring-0
+              active:bg-lnav active:shadow-lg
               transition
               duration-150
               ease-in-out"
@@ -92,7 +95,7 @@ function Contact() {
                     <div className="mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6">
                       <div className="flex items-start">
                         <div className="shrink-0">
-                          <div className="p-4 bg-lnav rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <div className="p-4      bg-black rounded-md shadow-md w-14 h-14 flex items-center justify-center">
                             <svg
                               aria-hidden="true"
                               focusable="false"
@@ -112,7 +115,9 @@ function Contact() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Technical support</p>
-                          <p className="text-gray-500">support@example.com</p>
+                          <p className="text-gray-500">
+                            support@discussion.com
+                          </p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -120,7 +125,7 @@ function Contact() {
                     <div className="mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6">
                       <div className="flex items-start">
                         <div className="shrink-0">
-                          <div className="p-4 bg-lnav rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <div className="p-4       bg-black rounded-md shadow-md w-14 h-14 flex items-center justify-center">
                             <svg
                               aria-hidden="true"
                               focusable="false"
@@ -140,7 +145,7 @@ function Contact() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Sales questions</p>
-                          <p className="text-gray-500">sales@example.com</p>
+                          <p className="text-gray-500">sales@discussion.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -148,7 +153,7 @@ function Contact() {
                     <div className="mb-12 md:mb-0 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6">
                       <div className="flex align-start">
                         <div className="shrink-0">
-                          <div className="p-4 bg-lnav rounded-md  shadow-md w-14 h-14 flex items-center justify-center">
+                          <div className="p-4      bg-black rounded-md  shadow-md w-14 h-14 flex items-center justify-center">
                             <svg
                               aria-hidden="true"
                               focusable="false"
@@ -167,8 +172,10 @@ function Contact() {
                           </div>
                         </div>
                         <div className="grow ml-6">
-                          <p className="font-bold mb-1">WED</p>
-                          <p className="text-gray-500">WED@example.com</p>
+                          <p className="font-bold mb-1">discussion</p>
+                          <p className="text-gray-500">
+                            discussion@example.com
+                          </p>
                           <p className="text-gray-500">+962777888888</p>
                         </div>
                       </div>
@@ -176,7 +183,7 @@ function Contact() {
                     <div className="grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6">
                       <div className="flex align-start">
                         <div className="shrink-0">
-                          <div className="p-4  bg-lnav rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <div className="p-4        bg-black rounded-md shadow-md w-14 h-14 flex items-center justify-center">
                             <svg
                               aria-hidden="true"
                               focusable="false"
@@ -196,8 +203,8 @@ function Contact() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Bug report</p>
-                          <p className="text-gray-500">bugs@example.com</p>
-                          <p className="text-gray-500">+1 234-567-89</p>
+                          <p className="text-gray-500">bugs@discussion.com</p>
+                          <p className="text-gray-500">+962 77748777</p>
                         </div>
                       </div>
                     </div>

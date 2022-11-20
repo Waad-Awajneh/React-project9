@@ -7,11 +7,10 @@ import Footers from "./components/CommonCss/footer/Footer";
 import Header from "./components/CommonCss/header/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SinglePage from "./layout/singlePage/singlePage";
-import Culture from "./layout/culture/culture";
+
 import { ReferenceDataContext } from "./ReferenceDataContext/ReferenceDataContext";
 import Login from "./layout/login";
 import SignUp from "./layout/signUp";
-import HomepagesTest from "./HomepagesTest";
 import Health from "./layout/Health";
 import World from "./layout/World";
 import Busness from "./layout/Busness";
@@ -21,27 +20,17 @@ import Style from "./layout/Style";
 import Search from "./layout/Search";
 import About from "./layout/About";
 import Contact from "./layout/contact";
-const App = () => {
-  // console.log(ReferenceDataContext);
-  // const data = useContext(ReferenceDataContext);
-  // console.log(data);
-  // console.log(isLoading);
-  // const { search } = useContext(ReferenceDataContext);
+import { useCookies } from "react-cookie";
 
-  // if (search)
-  //   return (
-  //     <>
-  //       <Header />
-  //       <Search />
-  //       <Footers />
-  //     </>
-  //   );
+const App = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
 
   return (
     <>
       <Header />
       <Routes>
         <Route exact path="/" element={<Homepages />} />
+        <Route exact path="*" element={<Homepages />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/Style" element={<Style />} />
@@ -52,8 +41,12 @@ const App = () => {
         <Route exact path="/World" element={<World />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route path="/singlepage/:id" exact element={<SinglePage />} />
-        <Route path="/search" exact element={<Search />} />
+        <Route
+          path="/singlepage/:id"
+          exact
+          element={cookies.currentUser != null ? <SinglePage /> : <Login />}
+        />
+        <Route path="/search/:id" exact element={<Search />} />
       </Routes>
       <Footers />
     </>

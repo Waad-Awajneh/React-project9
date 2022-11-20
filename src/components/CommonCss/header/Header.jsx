@@ -29,7 +29,7 @@ const Header = () => {
     <>
       <Head />
       <header>
-        <div className="container paddingSmall justify-between lg:flex md:flex sm:flex">
+        <div className="container paddingSmall items-center justify-between lg:flex md:flex sm:flex md:flex-warp lg:flex-warp sm:flex-warp">
           <nav className="w-1/2">
             <ul
               className={navbar ? "navbar" : "flex"}
@@ -88,13 +88,13 @@ const Header = () => {
               {navbar ? <TiTimes /> : <FaBars />}
             </button>
           </nav>
-          <span>
+          <span className="flex  items-center xl:gap-5 md:gap-2 sm:flex-warp md:flex-wrap">
             <span>
               <form className="flex items-center">
                 <label htmlFor="simple-search" className="sr-only">
                   Search
                 </label>
-                <div className="relative w-50 m-5">
+                <div className="relative w-50 m-5 ">
                   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
                       aria-hidden="true"
@@ -118,8 +118,11 @@ const Header = () => {
                     required=""
                     onChange={(e) => {
                       setSearchParam({ search: e.target.value });
-                      // setToSearch(e.target.value);
-                      navigate(`/search`);
+                      console.log(e.target.value);
+                      // if (e.target.value.length == 0) {
+                      //   navigate("/");
+                      // }
+                      navigate(`/search/${e.target.value}`);
                     }}
                     value={searchParam.get("search")}
                   />
@@ -127,7 +130,13 @@ const Header = () => {
               </form>
             </span>
             <span>
-              {cookies.currentUser == null && <Link to="/login">Login</Link>}
+              {cookies.currentUser == null && (
+                <Link to="/login">
+                  <button className="bg-gray-300 text-black active:bg-gray-700 text-sm font-bold uppercase px-5 py-3 rounded shadow hover:bg-white outline-none focus:outline-none mr-1 mb-1 w-full md:m-0">
+                    Login
+                  </button>
+                </Link>
+              )}
             </span>
             <span>
               <Link to="/">

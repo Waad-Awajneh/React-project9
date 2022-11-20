@@ -63,7 +63,7 @@ const Popular = () => {
         <div className="content">
           <Slider {...settings}>
             {data
-              .filter((val) => val.popular == "no")
+              .filter((val) => val.popular == "yes")
               .map((val, i) => {
                 return (
                   <div className="items" key={i}>

@@ -1,19 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./side.css";
 import Slider from "react-slick";
 import Heading from "../../../../components/CommonCss/heading/Heading";
-import Tpost from "../Tpost/Tpost";
 import SocialMedia from "./../social/social";
 import { ReferenceDataContext } from "../../../../ReferenceDataContext/ReferenceDataContext";
 
 const Side = () => {
   const { data, isLoading, adv, catgeory } = useContext(ReferenceDataContext);
-  // const [data,setdata]
-  //   useEffect(() => {
-  //     setItems(data);
-  //   }, [data]);
 
   const settings = {
     dots: false,
@@ -27,7 +21,7 @@ const Side = () => {
     return <div>Loading .......</div>;
   }
   return (
-    <>
+    <div className="ml-5">
       <Heading title="Stay Connected" />
       <SocialMedia />
       <Heading title="Subscribe" />
@@ -40,10 +34,13 @@ const Side = () => {
           </button>
         </form>
       </section>
-      <section className="banner lg:block md:flex gap-1">
+
+      <section className="banner lg:block md:flex gap-1 ">
         {/* <img src="./images/sidebar-banner-new.jpg" alt="" />*/}
         {adv.map((val) => (
-          <img src={val.cover} alt="" />
+          <a href={val.title}>
+            <img className="my-5" src={val.cover} alt="" />
+          </a>
         ))}
       </section>
       {/*     <Tpost />*/}
@@ -80,7 +77,7 @@ const Side = () => {
           })}
         </Slider>
       </section>
-    </>
+    </div>
   );
 };
 

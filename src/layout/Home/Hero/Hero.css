@@ -81,8 +81,12 @@
     background-color: crimson;
 }
 
-.hero .box:nth-child(2) .category {
+.hero .box:nth-child(3) .category {
     background-color: #0b9931;
+}
+
+.hero .box:nth-child(2) .category {
+    background-color: #1d4f9b;
 }
 
 .hero .box:nth-child(4) .category {

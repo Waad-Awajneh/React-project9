@@ -4,7 +4,7 @@ import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { ReferenceDataContext } from "./../../../ReferenceDataContext/ReferenceDataContext";
-
+import { Link } from "react-router-dom";
 // same code of popular and change some part
 const SinglePageSlider = (props) => {
   // const [data, setData] = useState([]);
@@ -34,7 +34,7 @@ const SinglePageSlider = (props) => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     rows: 1,
     responsive: [
       {
@@ -87,14 +87,17 @@ const SinglePageSlider = (props) => {
                 return (
                   <div className="items relative container">
                     <div className="box">
-                      <div className="images gap-2 h-20 ">
-                        <img src={val.cover} alt="" />
-                        <div className="text text-center ml-2">
-                          <h1 className="title text-center sm:text-md">
-                            {val.title}
-                          </h1>
-                        </div>
-                      </div>
+                      <Link to={`/SinglePage/${val.id}`}>
+                        <div className="images gap-2 h-20 ">
+                          <img src={val.cover} alt="" />
+
+                          <div className="text text-center ml-2">
+                            <h1 className="title text-center sm:text-md">
+                              {val.title}
+                            </h1>
+                          </div>
+                        </div>{" "}
+                      </Link>
                     </div>
                   </div>
                 );

@@ -40,14 +40,16 @@ const Footers = () => {
             <h3>SPORT</h3>
 
             {data
-              ?.filter((item) => item.catgeory.catgeory == "Sport")
+              ?.filter((item) => item.catgeory.catgeory == "Sports")
               .filter((item, i) => i < 2)
               .map((item) => {
                 return (
-                  <div className="item">
-                    <img src={item.cover} alt="" />
-                    <p>{item.title}</p>
-                  </div>
+                  <Link to={`/SinglePage/${item.id}`}>
+                    <div className="item">
+                      <img src={item.cover} alt="" />
+                      <p>{item.title}</p>
+                    </div>
+                  </Link>
                 );
               })}
           </div>
@@ -58,10 +60,12 @@ const Footers = () => {
               .filter((item, i) => i < 2)
               .map((item) => {
                 return (
-                  <div className="item">
-                    <img src={item.cover} alt="" />
-                    <p>{item.title}</p>
-                  </div>
+                  <Link to={`/SinglePage/${item.id}`}>
+                    <div className="item">
+                      <img src={item.cover} alt="" />
+                      <p>{item.title}</p>
+                    </div>
+                  </Link>
                 );
               })}
           </div>

@@ -58,14 +58,14 @@ const Life = () => {
                     <div className="box shadow">
                       <div className="images">
                         <div className="h-48 img">
-                          <img className=" h-40" src={val.cover} alt="" />
+                          <img className="h-48" src={val.cover} alt="" />
                         </div>
                         <div class=" font-semibold text-xs pl-3 pt-2 ">
                           <span>{val.catgeory.catgeory}</span>
                         </div>
                       </div>
                       <Link to={`/SinglePage/${val.id}`}>
-                        <div className="p-3 items-center">
+                        <div className="p-3 items-center  h-28">
                           <h1 className=" text-md  font-medium">{val.title}</h1>
                         </div>
                       </Link>
