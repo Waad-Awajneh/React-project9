@@ -12,9 +12,9 @@ import Ppost from "./layout/Home/mainContent/Ppost/Ppost";
 import Popular from "./layout/Home/mainContent/popular/popular";
 import Hero from "./layout/Home/Hero/Hero";
 import ReferenceDataContextProvider from "./ReferenceDataContext/ReferenceDataContext";
-import Login from "./layout/login";
-// import Hero from "./layout/Home/Hero/Hero";
-// import { AuthProvider } from "./provider/AuthProvider";
+// import Login from "./layout/login";
+import Login from "./Login";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>

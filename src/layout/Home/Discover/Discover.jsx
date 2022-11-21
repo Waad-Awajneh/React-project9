@@ -39,7 +39,7 @@ const Discover = () => {
   }
   return (
     <section className="discover">
-      <div className="container">
+      <div className="container w-3/4 mx-5">
         <Heading title="Discover" />
         <div className="content">
           {catgeory.map((val) => {

@@ -26,8 +26,9 @@ const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
 
   return (
-    <>
+    <div>
       <Header />
+
       <Routes>
         <Route exact path="/" element={<Homepages />} />
         <Route exact path="*" element={<Homepages />} />
@@ -49,7 +50,7 @@ const App = () => {
         <Route path="/search/:id" exact element={<Search />} />
       </Routes>
       <Footers />
-    </>
+    </div>
   );
 };
 

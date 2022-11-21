@@ -8,7 +8,6 @@ const ReferenceDataContextProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(true);
   const [catgeory, setCatgeory] = useState([]);
   const [adv, setAdv] = useState([]);
-  // const [search, setSearch] = useState(false);
   const [tosearch, setToSearch] = useState("");
   useEffect(() => {
     const config = {

@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import LoginG from "../Login";
 
 const MySwal = withReactContent(Swal);
 
@@ -34,7 +35,7 @@ function Login() {
 
     function checkUser() {
       console.log(allUsers);
-      let user = allUsers.allUsers.filter(
+      let user = allUsers?.allUsers.filter(
         (user) => user.email == currentUser.email
       );
       if (user.length > 0) return true;
@@ -58,6 +59,7 @@ function Login() {
             <div className="w-full lg:w-4/12 px-4">
               <div className=" max-[380px]:h-80  max-[320px]:h-64  relative flex flex-col min-w-0 break-words w-full mb-6 border-0 my-5 bg-white dark:bg-[#18191c] shadow-2xl hover:shadow duration-200 rounded-xl">
                 <div className="rounded-t mb-0 px-6 py-6">
+                  <LoginG />
                   <hr className="mt-6 border-b-1 border-gray-400" />
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">

@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 import { HiColorSwatch } from "react-icons/hi";
 import withReactContent from "sweetalert2-react-content";
 import ReferenceDataContext from "./../../../ReferenceDataContext/ReferenceDataContext";
+import Logout from "../../../Logout";
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
@@ -29,10 +30,10 @@ const Header = () => {
     <>
       <Head />
       <header>
-        <div className="container paddingSmall items-center justify-between lg:flex md:flex sm:flex md:flex-warp lg:flex-warp sm:flex-warp">
-          <nav className="w-1/2">
+        <div className="containers flex-wrap paddingSmall items-center justify-between lg:flex md:flex sm:flex md:flex-warp lg:flex-warp sm:flex-warp">
+          <nav className="w-1/2 ml-5">
             <ul
-              className={navbar ? "navbar" : "flex"}
+              className={navbar ? "navbar" : "flex flex-wrap"}
               onClick={() => setNavbar(false)}
             >
               <li>
@@ -140,9 +141,12 @@ const Header = () => {
             </span>
             <span>
               <Link to="/">
-                {cookies.currentUser != null && (
-                  <button onClick={handelLogout}>logout</button>
-                )}
+                {cookies.currentUser != null &&
+                  (cookies.currentUser.googleId != "" ? (
+                    <Logout />
+                  ) : (
+                    <button onClick={handelLogout}>logout</button>
+                  ))}
               </Link>
             </span>
           </span>

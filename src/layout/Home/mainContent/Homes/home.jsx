@@ -11,7 +11,7 @@ const Homes = () => {
   return (
     <>
       <main>
-        <div className="container">
+        <div className="containers mx-5 ">
           <section className="mainContent">
             <Popular />
             <Ppost />

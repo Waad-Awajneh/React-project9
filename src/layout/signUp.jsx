@@ -49,8 +49,8 @@ function SignUp() {
         setAllusersArray([...allUsersArray, newUser]);
         let arr = [...allUsersArray, newUser];
         console.log([...allUsersArray, newUser]);
-        setCookie("currentUser", newUser, { path: "/", expires: 7 });
-        setAllusers("allUsers", arr, { path: "/", expires: 7 });
+        setCookie("currentUser", newUser, { path: "/" });
+        setAllusers("allUsers", arr, { path: "/" });
         // isRedirect = true;
         // callNav();
       } else {

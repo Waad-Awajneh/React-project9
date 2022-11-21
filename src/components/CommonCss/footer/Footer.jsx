@@ -17,7 +17,7 @@ const Footers = () => {
   return (
     <>
       <footer>
-        <div className="container">
+        <div className="containers mx-5">
           <div className="box logo">
             <Link to={"/"}>
               {" "}

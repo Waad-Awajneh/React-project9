@@ -1,6 +1,7 @@
-main .container {
+main .containers {
     display: flex;
     justify-content: space-between;
+
 }
 
 .mainContent {
@@ -16,7 +17,7 @@ main .container {
 }
 
 @media screen and (max-width: 768px) {
-    main .container {
+    main .containers {
         flex-direction: column;
     }
 

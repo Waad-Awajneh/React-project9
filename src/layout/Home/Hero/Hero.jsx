@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <>
       <section className="hero">
-        <div className="container mx-2">
+        <div className="containers  mx-5">
           {items
             ?.filter((item, i) => i < 4)
             .map((item) => {
