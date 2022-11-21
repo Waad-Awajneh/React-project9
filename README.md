@@ -10,4 +10,4 @@ javascript
 Tailwind
 Laravel
 
- # figma Link :https://www.figma.com/file/aRm5L8g8ihda5tWK4s8AcD/Untitled?node-id=0%3A1&t=OuluEcDEMwIudELz-1
+[Figma Link](https://www.figma.com/file/aRm5L8g8ihda5tWK4s8AcD/Untitled?node-id=0%3A1&t=OuluEcDEMwIudELz-1)
