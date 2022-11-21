@@ -1,6 +1,7 @@
-DISCUSSION is a web applications for news services.
+# DISCUSSION
+# is a web applications for news services.
 
-In this project, I used:
+# In this project, I used:
 
 HTML
 React
