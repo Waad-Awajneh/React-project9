@@ -68,7 +68,30 @@ footer ul li span::before {
 }
 
 @media screen and (max-width: 768px) {
-  footer .container {
+  footer .containers {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media screen and (max-width: 600px) {
+  footer .displayNone {
+    display: none;
+
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer .containers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  footer {
+    display: none;
+    display: flex;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+
+
 }

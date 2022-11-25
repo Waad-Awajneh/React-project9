@@ -14,6 +14,7 @@ import Hero from "./layout/Home/Hero/Hero";
 import ReferenceDataContextProvider from "./ReferenceDataContext/ReferenceDataContext";
 // import Login from "./layout/login";
 import Login from "./Login";
+import Modal from "./layout/Modal";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,4 +1,3 @@
-// import React from "react";
 import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
 
@@ -16,7 +15,6 @@ function ApiProvider({ children }) {
     axios(config)
       .then(function (response) {
         setData([response.data]);
-        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);

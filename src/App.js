@@ -38,7 +38,7 @@ const App = () => {
         <Route exact path="/Media" element={<Media />} />
         <Route exact path="/Sports" element={<Sports />} />
         <Route exact path="/Health" element={<Health />} />
-        <Route exact path="/Busness" element={<Busness />} />
+        <Route exact path="/Business" element={<Busness />} />
         <Route exact path="/World" element={<World />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
@@ -55,18 +55,3 @@ const App = () => {
 };
 
 export default App;
-/**
- *
- *
- *
- *
- */
-/**
- *    <Route exact path="/" element={<HomepagesTest />}>
-          <Route exact index path="Home" element={<Homepages />} />
-          <Route exact path="culture" element={<Culture />} />
-        </Route>
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<SignUp />} />{" "}
-        <Route path="/singlepage/:id" exact element={<SinglePage />} />
- */

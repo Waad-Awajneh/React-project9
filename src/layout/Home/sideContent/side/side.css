@@ -91,3 +91,16 @@
         height: 400px;
     }
 }
+
+@media screen and (max-width: 480px) {
+
+    .banner {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+}

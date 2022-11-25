@@ -11,23 +11,6 @@ import { Link } from "react-router-dom";
 const Life = () => {
   const { data, isLoading } = useContext(ReferenceDataContext);
 
-  // const [lifestyle, setLifestyle] = useState([]);
-
-  // useEffect(() => {
-  //   const config = {
-  //     method: "get",
-  //     url: "http://127.0.0.1:8000/api/GetLifestyle",
-  //     headers: {},
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       setLifestyle([...response.data]);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -52,6 +35,9 @@ const Life = () => {
           <Slider {...settings}>
             {data
               .filter((val) => val.PaidContent == "yes")
+              .sort(
+                (dateA, dateB) => new Date(dateB.time) - new Date(dateA.time)
+              )
               .map((val, i) => {
                 return (
                   <div className="items" key={i}>

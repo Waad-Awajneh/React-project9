@@ -49,7 +49,7 @@ const SinglePage = () => {
     <>
       <main>
         <SinglePageSlider catgeory={item.catgeory.catgeory} />
-        <div className="container mx-5">
+        <div className="containers mx-5">
           <section className="mainContent details">
             <h1 className="title">{item.title}</h1>
 
@@ -71,7 +71,7 @@ const SinglePage = () => {
               </div>
             </div>
 
-            <div className="desctop">
+            <div className="desctop py-5">
               <>
                 <p>{item.para}</p>
                 <p>{item.para1}</p>
@@ -79,9 +79,9 @@ const SinglePage = () => {
             </div>
             <img src={item.cover} alt="" />
 
-            <p>{item.para3}</p>
+            <p className="my-5">{item.para3}</p>
 
-            <div className="descbot">
+            <div className="descbot py-6">
               <>
                 <h1>{item.details.title}</h1>
                 <p>{item.details.para1}</p>
@@ -93,7 +93,7 @@ const SinglePage = () => {
               <p>{item.details.quote}</p>
             </div>
 
-            <div className="desctop">
+            <div className="desctop py-5">
               <>
                 <p>{item.details.para2}</p>
                 <p>{item.details.para3}</p>

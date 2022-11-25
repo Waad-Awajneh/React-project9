@@ -12,9 +12,7 @@ import {
 import navbarGradient from "@material-tailwind/react/theme/components/navbar/navbarGradient";
 
 const Search = (props) => {
-  //  { const [searchParam, setSearchParam]} = useSearchParams();
   const search = useParams();
-  //   const showSearchedNews = searchParam.get("search");
   const navigate = useNavigate();
 
   const { data } = useContext(ReferenceDataContext);
@@ -23,14 +21,28 @@ const Search = (props) => {
   return (
     <>
       <main>
-        <div className="container ">
+        <div className="containers flex justify-around flex-warp lg:flex-nowrap ">
           <section className="culture">
             <div className="m-2 grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
               {data
                 .filter((news) => {
-                  return news.title
-                    .toLowerCase()
-                    .includes(search.id.toLowerCase().trim());
+                  return (
+                    news.title
+                      .toLowerCase()
+                      .includes(search.id.toLowerCase().trim()) ||
+                    news.para3
+                      .toLowerCase()
+                      .includes(search.id.toLowerCase().trim()) ||
+                    news.para1
+                      .toLowerCase()
+                      .includes(search.id.toLowerCase().trim()) ||
+                    news.authorName
+                      .toLowerCase()
+                      .includes(search.id.toLowerCase().trim()) ||
+                    news.para
+                      .toLowerCase()
+                      .includes(search.id.toLowerCase().trim())
+                  );
                 })
                 .map((val) => {
                   return <Card data={val} />;
@@ -38,7 +50,7 @@ const Search = (props) => {
             </div>
           </section>
 
-          <section className="sideContent">
+          <section className="sideContent mx-5">
             <Side />
           </section>
         </div>

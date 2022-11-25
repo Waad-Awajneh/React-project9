@@ -21,6 +21,7 @@ const Hero = () => {
         <div className="containers  mx-5">
           {items
             ?.filter((item, i) => i < 4)
+            .sort((dateA, dateB) => new Date(dateB.time) - new Date(dateA.time))
             .map((item) => {
               return <Card key={item.id} item={item} />;
             })}

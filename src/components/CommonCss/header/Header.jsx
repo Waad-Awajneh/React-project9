@@ -5,16 +5,12 @@ import { Link, NavLink, useSearchParams, useNavigate } from "react-router-dom";
 import { TiTimes } from "react-icons/ti";
 import { FaBars } from "react-icons/fa";
 import { useCookies } from "react-cookie";
-import { HiColorSwatch } from "react-icons/hi";
-import withReactContent from "sweetalert2-react-content";
-import ReferenceDataContext from "./../../../ReferenceDataContext/ReferenceDataContext";
+
 import Logout from "../../../Logout";
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["currentUser"]);
   const [searchParam, setSearchParam] = useSearchParams();
-  // const showSearchedNews = searchParam.get("search");
-  // const { tosearch, setToSearch } = useContext(ReferenceDataContext);
 
   const navigate = useNavigate();
   const handelLogout = () => {
@@ -47,8 +43,8 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink style={navStyle} to="/Busness">
-                  Busness
+                <NavLink style={navStyle} to="/Business">
+                  Business
                 </NavLink>
               </li>
               <li>
@@ -89,7 +85,7 @@ const Header = () => {
               {navbar ? <TiTimes /> : <FaBars />}
             </button>
           </nav>
-          <span className="flex  items-center xl:gap-5 md:gap-2 sm:flex-warp md:flex-wrap">
+          <span className="flex mr-5 items-center xl:gap-5 md:gap-2 sm:flex-warp md:flex-wrap ">
             <span>
               <form className="flex items-center">
                 <label htmlFor="simple-search" className="sr-only">

@@ -80,18 +80,22 @@
 }
 
 .hero .box:nth-child(1) .category {
+    padding: 3px;
     background-color: crimson;
 }
 
 .hero .box:nth-child(3) .category {
+    padding: 3px;
     background-color: #0b9931;
 }
 
 .hero .box:nth-child(2) .category {
+    padding: 3px;
     background-color: #1d4f9b;
 }
 
 .hero .box:nth-child(4) .category {
+    padding: 3px;
     background-color: #c78823;
 }
 

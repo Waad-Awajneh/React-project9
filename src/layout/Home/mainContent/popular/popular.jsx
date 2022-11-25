@@ -13,25 +13,6 @@ import Heading from "../../../../components/CommonCss/heading/Heading";
 
 const Popular = () => {
   const { data, isLoading } = useContext(ReferenceDataContext);
-  // const popular= data.filter((val) => val.popular=="yes"));
-
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   const config = {
-  //     method: "get",
-  //     url: "http://127.0.0.1:8000/api/GetPopular",
-  //     headers: {},
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       setData([...response.data]);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const settings = {
     className: "center",
     centerMode: false,
@@ -64,13 +45,16 @@ const Popular = () => {
           <Slider {...settings}>
             {data
               .filter((val) => val.popular == "yes")
+              .sort(
+                (dateA, dateB) => new Date(dateB.time) - new Date(dateA.time)
+              )
               .map((val, i) => {
                 return (
                   <div className="items" key={i}>
                     <div className="box shadow">
                       <div className="images row">
-                        <div className="   h-36 img">
-                          <img className=" h-36" src={val.cover} alt="" />
+                        <div className=" w-48  h-36 img">
+                          <img className="w-48 h-36" src={val.cover} alt="" />
                         </div>
                       </div>
                       <Link to={`/SinglePage/${val.id}`}>

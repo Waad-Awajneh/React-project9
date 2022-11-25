@@ -11,32 +11,37 @@ import { Link } from "react-router-dom";
 const Footers = () => {
   const { data, isLoading } = useContext(ReferenceDataContext);
   const SumLable = (catgeory) => {
-    // console.log(catgeory);
     return data?.filter((item) => item.catgeory.catgeory == catgeory).length;
   };
   return (
     <>
       <footer>
         <div className="containers mx-5">
-          <div className="box logo">
-            <Link to={"/"}>
-              {" "}
-              <img
-                src="../images/logo.png"
-                className="bg-white w-3/4  "
-                alt=""
-              />
-            </Link>
-            <p>
-              News the world leader in online news and information and seeks to
-              inform, engage and empower the world.
-            </p>
-            <BsFillEnvelopeFill />
-            <span> info@news.com </span> <br />
-            <FaHeadphonesAlt />
-            <span> +962 777487777</span>
+          <div className="box logo m-3 ml-2">
+            <span className="flex flex-wrap ">
+              <Link to={"/"}>
+                <img
+                  src="../images/logoFooter.png"
+                  className=" w-3/4  "
+                  alt=""
+                />
+              </Link>
+              <p>
+                News the world leader in online news and information and seeks
+                to inform, engage and empower the world.
+              </p>
+            </span>
+            <span className="flex flex-wrap items-center mx-2">
+              <BsFillEnvelopeFill />
+              <span> info@news.com </span>
+            </span>
+            <br />
+            <span className="flex flex-wrap items-center mx-2">
+              <FaHeadphonesAlt />
+              <span> +962 777487777</span>
+            </span>
           </div>
-          <div className="box">
+          <div className="box displayNone">
             <h3>SPORT</h3>
 
             {data
@@ -53,7 +58,7 @@ const Footers = () => {
                 );
               })}
           </div>
-          <div className="box">
+          <div className="box displayNone">
             <h3>Health</h3>
             {data
               ?.filter((item) => item.catgeory.catgeory == "Health")
@@ -69,9 +74,9 @@ const Footers = () => {
                 );
               })}
           </div>
-          <div className="box">
+          <div className="box displayNone">
             <h3>LABELS</h3>
-            {/*<i className='fa fa-chevron-right'></i>*/}
+
             <ul>
               <li>
                 <Link to="/World">World</Link>

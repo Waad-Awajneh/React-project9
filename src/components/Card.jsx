@@ -1,7 +1,4 @@
 import React from "react";
-
-import { BsHeartFill } from "react-icons/bs";
-import { RiMessage3Fill } from "react-icons/ri";
 import { HiSaveAs } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
@@ -26,7 +23,7 @@ function Card(props) {
 
           <div className="p-4 flex flex-wrap">
             <h3 className="text-primary dark:text-white font-medium text-l">
-              {cardInfo.title}
+              {cardInfo.title.slice(0, 40)} ...
             </h3>
           </div>
         </div>

@@ -8,12 +8,12 @@
 }
 
 .music .images {
-    width: 320px;
+    /* width: 320px; */
     height: 220px;
 }
 
 .music img {
-    width: 320px;
+    /* width: 320px; */
     height: 220px;
     object-fit: cover;
 }
@@ -27,5 +27,17 @@
     .music img,
     .music .images {
         height: 350px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .music .img,
+    .music .images {
+        width: 100%;
+    }
+
+    .music .box {
+        flex-direction: column;
     }
 }

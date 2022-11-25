@@ -11,23 +11,6 @@ import "./ppost.css";
 
 const Ppost = () => {
   const { data, isLoading } = useContext(ReferenceDataContext);
-
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   const config = {
-  //     method: "get",
-  //     url: "http://127.0.0.1:8000/api/GetPpost",
-  //     headers: {},
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       setData([...response.data]);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, []);
   const settings = {
     className: "center",
     centerMode: false,
@@ -36,19 +19,27 @@ const Ppost = () => {
     slidesToShow: 1,
     speed: 500,
     rows: 1,
-    slidesPerRow: 1,
-    // responsive: [
-    //   {
-    //     breakpoint: 800,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       // rows: 4,
-    //     },
-    //   },
-    // ],
+    slidesPerRow: 2,
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 1,
+        },
+      },
+    ],
   };
-  // console.log(data);
+
   if (isLoading) {
     return <div>Loading .......</div>;
   }
@@ -63,28 +54,34 @@ const Ppost = () => {
               .filter(
                 (val) => new Date(val.time).getMonth() == new Date().getMonth()
               )
+              .sort(
+                (dateA, dateB) => new Date(dateB.time) - new Date(dateA.time)
+              )
               .map((val, i) => {
                 return (
                   <div className="items" key={i}>
                     <div className="box shadow">
                       <div className="images">
                         <div className="img  h-96">
-                          <img src={val.cover} alt="" />
+                          <img className="h-96" src={val.cover} alt="" />
                         </div>
-                        <div class="category category1">
-                          <span>{val.catgeory.catgeory}</span>
+                        <div class="category category1 h-42">
+                          <span className="font-bold text-sm mx-3">
+                            {val.catgeory.catgeory}
+                          </span>
+                          <Link to={`/SinglePage/${val.id}`}>
+                            <div className="text">
+                              <h1 className="title">
+                                {val.title.slice(0, 40)} ...
+                              </h1>
+                              <div className="date flex font-bold text-sm items-center px-3">
+                                <FcCalendar />
+                                <label>{val.time}</label>
+                              </div>
+                            </div>
+                          </Link>
                         </div>
                       </div>
-                      <Link to={`/SinglePage/${val.id}`}>
-                        <div className="text">
-                          <h1 className="title">{val.title}</h1>
-                          <div className="date flex  items-center px-3">
-                            <FcCalendar />
-
-                            <label>{val.time}</label>
-                          </div>
-                        </div>
-                      </Link>
                     </div>
                   </div>
                 );

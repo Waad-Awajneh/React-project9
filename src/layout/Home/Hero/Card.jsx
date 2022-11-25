@@ -11,7 +11,9 @@ const Card = (props) => {
         <div className="text">
           <span className="category">{props.item.catgeory.catgeory}</span>
           <Link to={`/SinglePage/${props.item.id}`}>
-            <h1 className="titleBg">{props.item.title}</h1>
+            <h1 className="titleBg mx-2 px-2 bg-black bg-opacity-30">
+              {props.item.title}
+            </h1>
           </Link>
           <div className="author flex">
             <span>by {props.item.authorName}</span>

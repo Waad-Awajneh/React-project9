@@ -7,24 +7,10 @@ import { FaShareAlt } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
 import React, { useState, useEffect, useContext } from "react";
 import { ReferenceDataContext } from "../../../../ReferenceDataContext/ReferenceDataContext";
+import { Link } from "react-router-dom";
 
 const Music = () => {
-  // const [music, setMusic] = useState([]);
   const { data, isLoading } = useContext(ReferenceDataContext);
-  // useEffect(() => {
-  //   const config = {
-  //     method: "get",
-  //     url: "http://127.0.0.1:8000/api/GetPopular",
-  //     headers: {},
-  //   };
-  //   axios(config)
-  //     .then(function (response) {
-  //       setMusic([...response.data]);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }, []);
 
   const settings = {
     className: "center",
@@ -44,30 +30,36 @@ const Music = () => {
           <Slider {...settings}>
             {data
               .filter((val) => val.catgeory.catgeory === "Media")
+              .sort(
+                (dateA, dateB) => new Date(dateB.time) - new Date(dateA.time)
+              )
               .map((val) => {
                 return (
                   <div className="items">
                     <div className="box shadow flex">
-                      <div className="images">
-                        <div className="img">
-                          <img src={val.cover} alt="" />
+                      <div className="images w-56">
+                        <div className="img w-56">
+                          <img className="w-full" src={val.cover} alt="" />
                           {/*     <span>{val.catgeory}</span>*/}
                         </div>
                       </div>
-                      <div className="text">
-                        <h1 className="title  font-semibold my-1">
-                          {val.title}
-                        </h1>
-                        <div className="date font-bold flex items-center text-sm px-2 mx-2">
-                          <BsCalendar />
-                          <label className=" m-2">{val.time}</label>
+
+                      <Link to={`/SinglePage/${val.id}`}>
+                        <div className="text">
+                          <h1 className="title  font-semibold my-1">
+                            {val.title}
+                          </h1>
+                          <div className="date font-bold flex items-center text-sm px-2 mx-2">
+                            <BsCalendar />
+                            <label className=" m-2">{val.time}</label>
+                          </div>
+                          <p className="desc">{val.para1.slice(0, 250)}...</p>
+                          <div className="comment gap-3 flex text-center items-center px-2">
+                            <FaShareAlt />
+                            <label className="m-2">Share </label>
+                          </div>
                         </div>
-                        <p className="desc">{val.para1.slice(0, 250)}...</p>
-                        <div className="comment gap-3 flex text-center items-center px-2">
-                          <FaShareAlt />
-                          <label className="m-2">Share </label>
-                        </div>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 );
